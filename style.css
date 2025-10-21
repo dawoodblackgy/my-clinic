@@ -1,0 +1,677 @@
+/* General Styles & Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Cairo', sans-serif; /* استخدم خط عربي مناسب، تأكد من تضمينه في HTML */
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+    direction: rtl; /* لضمان اتجاه النص من اليمين لليسار */
+    text-align: right; /* محاذاة النص لليمين بشكل افتراضي */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none;
+}
+
+h1, h2, h3 {
+    color: #222;
+    margin-bottom: 15px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.5em;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: 50%;
+    transform: translateX(50%);
+    width: 60px;
+    height: 3px;
+    background-color: #007bff;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+}
+
+.section-padding {
+    padding: 80px 0;
+}
+
+.bg-light {
+    background-color: #e9ecef;
+}
+
+/* Header */
+header {
+    background-color: #fff;
+    color: #333;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    margin-left: 10px; /* مسافة بين الشعار والنص */
+}
+
+.logo h1 {
+    font-size: 1.8em;
+    margin: 0;
+    color: #007bff;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+nav .nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+nav .nav-links li a {
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    padding: 5px 0;
+    position: relative;
+}
+
+nav .nav-links li a:hover {
+    color: #007bff;
+}
+
+nav .nav-links li a.btn-appointment {
+    background-color: #28a745;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav .nav-links li a.btn-appointment:hover {
+    background-color: #218838;
+    text-decoration: none;
+}
+
+.menu-toggle {
+    display: none; /* مخفي افتراضياً على الشاشات الكبيرة */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    position: relative;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+/* Hero Section */
+.hero {
+    background: url('hero-bg.jpg') no-repeat center center/cover; /* استبدل hero-bg.jpg بصورة خلفية مناسبة */
+    color: #fff;
+    text-align: center;
+    padding: 100px 0;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* طبقة شفافة لتوضيح النص */
+}
+
+.hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h2 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.hero p {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+}
+
+/* Clinic Grid */
+.clinic-grid, .doctor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.clinic-card, .doctor-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.clinic-card:hover, .doctor-card:hover {
+    transform: translateY(-5px);
+}
+
+.clinic-card img, .doctor-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 15px;
+}
+
+.clinic-card h3, .doctor-card h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.clinic-card p, .doctor-card p {
+    padding: 0 15px;
+    font-size: 0.95em;
+    color: #555;
+}
+
+/* Services List */
+#services ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 30px;
+    padding-right: 20px; /* لتعويض نقطة القائمة */
+}
+
+#services ul li {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: relative;
+    padding-right: 40px; /* مساحة للأيقونة */
+}
+
+#services ul li::before {
+    content: '✓'; /* أيقونة بسيطة */
+    color: #28a745;
+    font-weight: bold;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+}
+
+/* Contact Section */
+#contact p {
+    margin-bottom: 10px;
+}
+
+.map-placeholder {
+    margin-top: 30px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.map-placeholder iframe {
+    width: 100%;
+    height: 400px;
+    display: block;
+}
+
+/* Appointment Form */
+.appointment-form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    max-width: 600px;
+    margin: 30px auto 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="email"],
+.form-group input[type="date"],
+.form-group input[type="time"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: 'Cairo', sans-serif;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.appointment-form button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 50px;
+}
+
+footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.social-links a {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.social-links img {
+    width: 30px;
+    height: 30px;
+    filter: invert(1); /* لجعل الأيقونات بيضاء */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .logo h1 {
+        font-size: 1.5em;
+    }
+
+    nav .nav-links {
+        display: none; /* إخفاء القائمة افتراضياً */
+        flex-direction: column;
+        position: absolute;
+        top: 80px; /* تحت الهيدر */
+        right: 0;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        padding: 20px 0;
+        border-top: 1px solid #eee;
+    }
+
+    nav .nav-links.active {
+        display: flex; /* إظهار القائمة عند تفعيلها بالـ JS */
+    }
+
+    nav .nav-links li {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    nav .nav-links li a {
+        display: block;
+        padding: 10px 0;
+        color: #333;
+    }
+
+    nav .nav-links li a.btn-appointment {
+        margin: 10px auto;
+        display: inline-block; /* لكي لا يأخذ عرض 100% */
+    }
+
+    .menu-toggle {
+        display: block; /* إظهار زر القائمة */
+    }
+
+    .hero h2 {
+        font-size: 2.5em;
+    }
+
+    .hero p {
+        font-size: 1.1em;
+    }
+
+    .clinic-grid, .doctor-grid {
+        grid-template-columns: 1fr; /* عمود واحد على الجوال */
+    }
+
+    #services ul {
+        grid-template-columns: 1fr;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+}
+
+/* Menu Toggle Animation */
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Chatbot Button */
+.chatbot-button {
+    position: fixed;
+    bottom: 30px;
+    left: 30px; /* وضع الزر في الزاوية السفلية اليسرى للمواقع العربية */
+    background-color: #007bff;
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 1001; /* أعلى من الهيدر ليكون مرئياً دائماً */
+    transition: background-color 0.3s ease;
+}
+
+.chatbot-button:hover {
+    background-color: #0056b3;
+}
+
+.chatbot-button img {
+    width: 35px;
+    height: 35px;
+    filter: invert(1); /* لجعل الأيقونة بيضاء إذا كانت داكنة */
+}
+
+/* Chatbot Container */
+.chatbot-container {
+    position: fixed;
+    bottom: 100px; /* فوق الزر */
+    left: 30px; /* محاذاة مع الزر */
+    width: 350px;
+    height: 450px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 1002; /* أعلى من الزر ليكون مرئياً عند الفتح */
+    display: none; /* مخفي افتراضياً */
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Cairo', sans-serif; /* استخدام نفس الخط الرئيسي */
+}
+
+.chatbot-container.active {
+    display: flex; /* يظهر عند إضافة كلاس 'active' بواسطة JavaScript */
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.chatbot-header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.chatbot-header h3 {
+    margin: 0;
+    color: #fff;
+    font-size: 1.1em;
+}
+
+.close-chatbot {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.2em;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.chatbot-body {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto; /* لجعل محتوى الشات قابل للتمرير */
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    max-width: 80%;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-radius: 15px;
+    line-height: 1.4;
+}
+
+.message p {
+    margin: 0;
+}
+
+.message.bot {
+    background-color: #e0e0e0;
+    align-self: flex-start; /* رسائل البوت على اليسار */
+    border-bottom-left-radius: 3px;
+}
+
+.message.user {
+    background-color: #007bff;
+    color: #fff;
+    align-self: flex-end; /* رسائل المستخدم على اليمين */
+    border-bottom-right-radius: 3px;
+}
+
+.chatbot-input {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #eee;
+}
+
+.chatbot-input input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-left: 10px; /* مسافة بين مربع الإدخال وزر الإرسال */
+    font-family: 'Cairo', sans-serif;
+}
+
+.chatbot-input button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.chatbot-input button:hover {
+    background-color: #218838;
+}
+
+/* Responsive adjustments for chatbot */
+@media (max-width: 768px) {
+    .chatbot-button {
+        bottom: 20px;
+        left: 20px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .chatbot-button img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .chatbot-container {
+        bottom: 80px;
+        left: 20px;
+        width: calc(100% - 40px); /* عرض كامل الشاشة مع هوامش */
+        height: 400px;
+    }
+}
+
+/* Typing indicator animation */
+.typing-indicator span {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #888;
+    margin: 0 2px;
+    animation: bounce 1.4s infinite both;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1.0); }
+}
+
+/* تحسينات إضافية للشات بوت */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* تحسين مظهر الزر */
+.chatbot-button {
+    background-color: #007bff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.chatbot-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+}
+
+.chatbot-button:active {
+    transform: scale(0.95);
+}
+
+/* تحسين مظهر زر الإغلاق */
+.close-chatbot {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.close-chatbot:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
