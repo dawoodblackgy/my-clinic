@@ -88,7 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // استبدل دالة getAIResponse بالكود الجديد:
     async function getAIResponse(userMessage) {
         try {
-            // استخدم المسار المطلق للـ API
             const response = await fetch('/api/chat', {
                 method: 'POST',
                 headers: {
@@ -98,16 +97,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     message: userMessage
                 })
             });
-
-            if (response.ok) {
-                const data = await response.json();
-                return data.response;
-            } else {
-                throw new Error(`Server Error: ${response.status}`);
-            }
+    
+            const data = await response.json();
+            return data.response;
             
         } catch (error) {
             console.error('API Error:', error);
+            // بما أن الخادم أصبح يعالج الأخطاء، يمكن تبسيط هذا الجزء
+            // لكن سنبقي على getEnhancedResponse كإجراء احترازي إضافي
             return getEnhancedResponse(userMessage);
         }
     }
